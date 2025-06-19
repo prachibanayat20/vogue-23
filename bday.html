@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HER ERA — Digital Magazine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto+Slab:wght@400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto Slab', serif;
+      background-color: #fff;
+      color: #111;
+      scroll-behavior: smooth;
+      line-height: 1.7;
+    }
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+   .cover {
+  height: 100vh;
+  background-image: url('../birthday/The\ QR/vogue.jpg');
+  background-position: top center; /* focus on the subject's face */
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  align-items: flex-end;
+  padding: 5px;
+  color: white;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+    .cover h1 {
+      font-size: 4rem;
+    }
+    .page {
+      border-top: 5px double #111;
+      margin-top: 4rem;
+    }
+    .headline {
+      font-size: 2rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+    }
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .columns p {
+      text-align: justify;
+    }
+    .article-img {
+      width: 100%;
+      border: 2px solid #111;
+      margin: 1rem 0;
+    }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .photo-grid img {
+      width: 100%;
+      border: 1px solid #aaa;
+    }
+    .diary {
+      background-color: #f5f5f5;
+      padding: 2rem;
+      border-left: 5px solid #444;
+      margin-top: 3rem;
+      font-family: 'Playfair Display', serif;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #888;
+      padding: 4rem 1rem;
+    }
+    @media (max-width: 600px) {
+      .cover h1 { font-size: 2.2rem; }
+      .headline { font-size: 1.4rem; }
+    }
+    .masonry {
+  column-count: 2;
+  column-gap: 1rem;
+  padding-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .masonry {
+    column-count: 3;
+  }
+}
+
+.masonry img {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  break-inside: avoid;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.masonry img:hover {
+  transform: scale(1.03);
+}
+
+
+.gossip-ticker {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #111;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  z-index: 999;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+ 
+
+
+
+
+
+.diary-cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: #f0e6dc;
+  font-family: 'Playfair Display', serif;
+}
+
+.diary-cover img {
+  width: 180px;
+  max-width: 60%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.diary-cover img:hover {
+  transform: scale(1.05);
+}
+
+.memory-journal-container {
+  display: none;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+
+.memory-journal-container {
+  display: none;
+  padding: 4rem 2rem;
+  background: #fefaf6;
+  animation: fadeIn 1s ease-in-out forwards;
+  min-height: 100vh;
+}
+
+.memory-journal {
+  column-count: 3;
+  column-gap: 0.8rem;
+  padding: 1rem 0;
+}
+
+
+@media (min-width: 768px) {
+  .memory-journal {
+    column-count: 4;
+  }
+}
+
+@media (min-width: 1024px) {
+  .memory-journal {
+    column-count: 5;
+  }
+}
+
+.memory-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.memory-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+.memory-item:hover {
+  transform: scale(1.03);
+}
+
+
+
+.editorial-interview {
+  background: #f9f9f9;
+  border-top: 8px double #111;
+  border-bottom: 8px double #111;
+  padding: 4rem 2rem;
+  margin-top: 5rem;
+}
+
+.interview-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.interview-header span {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.interview-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  text-transform: uppercase;
+  color: #111;
+  border-bottom: 2px solid #111;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.editorial-columns h2 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #222;
+  text-transform: uppercase;
+  margin-top: 2rem;
+  letter-spacing: 1px;
+}
+
+.editorial-columns p {
+  font-size: 1rem;
+  color: #444;
+  margin-top: 0.5rem;
+  line-height: 1.6;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- COVER PAGE -->
+  <section class="cover">
+   
+  </section>
+
+  <!-- MAGAZINE ARTICLES -->
+  
+    
+
+
+  <section class="page">
+  <div class="headline">Scandal. Style. She Wrote It All.</div>
+
+  <!-- Row 1 -->
+  <div class="columns">
+      <div>
+  <h2>"Slays in the saree like no one's business"</h2>
+  <p>She didn’t wear the saree — she set it on fire and walked through the ashes in heels. Six yards of elegance wrapped around pure confidence. While others fix their pleats, she’s already breaking necks. The pallu didn’t fall — it *commanded*.  And that backless blouse ufffff.</p>
+      <img src="../birthday/The QR/img46.jpg" alt="Shoot 6" class="article-img" />
+</div>
+     <div>
+      <h2>"Laughs Like a Kid, Plots Like a CEO"</h2>
+      <p>She giggles at memes and also has a master plan. Can feed you cake and burn a bridge with the same hands. She's soft, sure — but she's the kind of soft that doesn’t break. You might not know it yet but she has already planned your murder. Beware.</p>
+      <img src="../birthday/The QR/IMG-20221107-WA0002.jpg" alt="Shoot 7" class="article-img" />
+    </div>
+   
+
+  <!-- Row 2 -->
+  <div class="columns" style="margin-top: 3rem;">
+    <div>
+      <h2>"Caught Stealing Hearts… Again"</h2>
+      <p>Sources say she walked into the room and suddenly everyone forgot their type. Coincidence? Unlikely. That smirk? Verified weapon. She’s not collecting attention — attention collects her.</p>
+      <img src="../birthday/The QR/img24.jpg" alt="Shoot 6" class="article-img" />
+    </div>
+
+    <div>
+      <h2>"Unbothered, Deydrated, and Glowing"</h2>
+      <p>She never drinks water, minds her business, and lets karma do the dragging. When others zig, she zags — usually toward the shopping aisle or maybe a zipline with confidence. Petty? No. Prepared? Always.</p>
+      <img src="../birthday/The QR/img21.jpg" alt="Shoot 6" class="article-img" />
+    </div>
+  </div>
+
+  <!-- Row 3 -->
+  <div class="columns" style="margin-top: 3rem;">
+ 
+
+       <div>
+      <h2>"Smiling at Haters Since 2002"</h2>
+      <p>They whispered behind her back — but that’s okay, she was already ten steps ahead, probably posing for a better angle. She doesn’t clap back — she outshines.</p>
+      <img src="../birthday/The QR/img40.jpg" alt="Shoot 1" class="article-img" />
+    </div>
+
+
+
+
+</section>
+
+
+
+  <!-- PHOTOSHOOT SPREAD -->
+<section class="page">
+  <div class="headline">The Diva Edit</div>
+  <p style="font-style: italic; margin-top: -1rem; margin-bottom: 2rem; color: #444;">
+  Beyond the filters and inside the pixels  with K— 
+</p>
+
+  <div class="masonry">
+    <img src="../birthday/The QR/img1.jpeg" alt="Shoot 1">
+    <img src="../birthday/The QR/img8.jpg" alt="Shoot 1">
+    <img src="../birthday/The QR/img9.jpg" alt="Shoot 1">
+    <img src="../birthday/The QR/IMG_20250619_151904.jpg" alt="Shoot 1">
+    <img src="../birthday/The QR/IMG-20221107-WA0003.jpg" alt="Shoot 1">
+    <img src="../birthday/The QR/IMG-20230629-WA0007.jpg" alt="Shoot 1">
+    <img src="../birthday/The QR/img10.jpg" alt="Shoot 1">
+    <img src="../birthday/The QR/img24.jpg" alt="Shoot 1">
+    <img src="../birthday/The QR/img41.jpg" alt="Shoot 1">
+    <img src="../birthday/The QR/img23.jpg" alt="Shoot 1">
+    <img src="../birthday/The QR/IMG-20221107-WA0000.jpg" alt="Shoot 1">
+    <img src="../birthday/The QR/img11.jpg" alt="Shoot 1">
+    <img src="../birthday/The QR/img46.jpg" alt="Shoot 1">
+    <img src="../birthday/The QR/img47.jpg" alt="Shoot 1">
+    <img src="../birthday/The QR/img31.jpg" alt="Shoot 1">
+  </div>
+</section>
+
+
+
+<section class="page editorial-interview">
+  <div class="interview-header">
+    <span>INTERVIEW</span>
+    <h1>She Said What She Said</h1>
+    <p>an exclusive interview segment with khushboo aka jesal get insights of her wit</p>
+  </div>
+
+  <div class="columns editorial-columns">
+    <div>
+      <h2>Q: How do you deal with haters?</h2>
+      <p>A: Burn them.</p>
+
+      <h2>Q: Three things always in your bag?</h2>
+      <p>A: Lip gloss, cash, and trauma I refuse to unpack.</p>
+
+      <h2>Q: Describe yourself in three words?</h2>
+      <p>A: Sundar.sushil.sanskari. but sometimes 'sweet but psycho' also works</p>
+
+      <h2>Q: A toxic trait?</h2>
+      <p>A: Arguing while mentally designing my wedding lehenga.</p>
+
+      <h2>Q: Go-to escape plan?</h2>
+      <p>A: Fake a call to my friend.</p>
+    </div>
+
+    <div>
+      <h2>Q: Style inspiration?</h2>
+      <p>A: Somewhere between  a female mafia villain in a wattpad story and cute pintresty skirts.</p>
+
+      <h2>Q: What keeps you grounded?</h2>
+      <p>A: Gravity and chai. mostly chai.</p>
+
+      <h2>Q: Most used emoji?</h2>
+      <p>A:  😂.90% of my coversations.</p>
+
+      <h2>Q: Love language?</h2>
+      <p>A: Food. Always.</p>
+
+      <h2>Q: Villain origin?</h2>
+      <p>A: Someone said i cant do it. so i did it.</p>
+    </div>
+  </div>
+</section>
+
+  <!-- MEMORY DIARY -->
+ 
+ <section class="page" id="core-memory">
+  <div class="headline">The Memory Diary</div>
+  <p>collection of our core memories to remind you we are the coolest trio to ever exist</p>
+
+  <!-- CLOSED DIARY COVER -->
+  <div class="diary-cover" id="diaryTrigger">
+    <img src="../birthday/The QR/we bare bears.jpeg" alt="Closed Diary">
+    <h2>Click to Open</h2>
+    <p>(A page right out of our past)</p>
+  </div>
+
+  <!-- HIDDEN MEMORY COLLAGE -->
+  <div class="memory-journal-container" id="memoryContent">
+    <div class="memory-journal">
+      <div class="memory-item"><img src="../birthday/The QR/img2.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/img4.jpg" alt=""></div>
+    <div class="memory-item"><img src="../birthday/The QR/img5.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/img6.jpg" alt=""></div>
+     <div class="memory-item"><img src="../birthday/The QR/img7.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/img13.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/img17.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/img19.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/img22.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/img20.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/img26.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/img27.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/img29.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/img28.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/img32.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/img36.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/img38.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/img37.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/img39.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/img43.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/img45.jpg" alt=""></div>
+      <div class="memory-item"><img src="../birthday/The QR/we.jpg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+  <footer>
+    HER ERA | An archive of chaos, with love.
+  </footer>
+<div class="gossip-ticker">
+  <marquee behavior="scroll" direction="left" scrollamount="5">
+    🔥 "Did she really say that?" — Yes, and she looked amazing. &nbsp;&nbsp;&nbsp;
+    💋 "Unbothered, undefeated, unbent." &nbsp;&nbsp;&nbsp;
+    👠 "Did she really kill the hitler." &nbsp;&nbsp;&nbsp;
+    ✨ "traveling around the world at such young age must be fun shes living the life"
+  </marquee>
+</div>
+
+<script>
+  const trigger = document.getElementById("diaryTrigger");
+  const content = document.getElementById("memoryContent");
+
+  trigger.addEventListener("click", () => {
+    trigger.style.display = "none";
+    content.style.display = "block";
+  });
+</script>
+
+</body>
+</html>
